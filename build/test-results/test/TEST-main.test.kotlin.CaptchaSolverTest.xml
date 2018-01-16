@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="main.test.kotlin.CaptchaSolverTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2017-12-19T08:18:26" hostname="Holgers-MBP-2" time="0.008">
+  <properties/>
+  <testcase name="compute0ForAnEmptyListOfDigits" classname="main.test.kotlin.CaptchaSolverTest" time="0.0"/>
+  <testcase name="compute0ForAListContainingASingleDigit" classname="main.test.kotlin.CaptchaSolverTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
