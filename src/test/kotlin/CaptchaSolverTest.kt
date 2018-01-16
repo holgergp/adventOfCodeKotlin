@@ -2,7 +2,6 @@ package main.test.kotlin
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import kotlin.test.expect
 
 class CaptchaSolverTest {
 
@@ -28,6 +27,16 @@ class CaptchaSolverTest {
     }
 
     @Test
+    fun compute9ForAListContainingTheDigits9129() {
+        assertEquals(captchaSolver(arrayListOf<String>("9", "1", "2", "9")), 9)
+    };
+
+    @Test
+    fun compute0ForAListContainingTheDigits1234() {
+        assertEquals(captchaSolver(arrayListOf<String>("1", "2", "3", "4")), 0)
+    };
+
+    @Test
     fun convertAStringToAStringArray() {
         val foo = "123";
         val mappedFoo = toStringList(foo);
@@ -47,15 +56,17 @@ class CaptchaSolverTest {
         if (puzzleInput.size <= 1) {
             return 0;
         }
-        val amendedPuzzleInput = listOf<String>(puzzleInput.first()) + puzzleInput;
+        val amendedPuzzleInput = puzzleInput + listOf<String>(puzzleInput.first());
 
         return amendedPuzzleInput.fold(Pair<String, Int>("", 0), { (lastElement, acc), current: String -> Pair(current, conditionalCalculate(Pair(lastElement, acc), current)) }).second;
     }
 
     private fun conditionalCalculate(pair: Pair<String, Int>, current: String): Int {
         var newAcc: Int = pair.second;
-        if (pair.first === current) {
-            newAcc = current.toInt() + pair.second;
+        if (pair.first == current) {
+            println(pair);
+            print(current)
+            newAcc += current.toInt();
         }
         return newAcc;
     }
