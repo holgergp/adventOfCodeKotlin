@@ -1,4 +1,4 @@
-package main.kotlin
+package captchaSolver
 
 class CaptchaSolver {
 

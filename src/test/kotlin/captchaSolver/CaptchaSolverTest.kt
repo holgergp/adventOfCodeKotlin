@@ -1,6 +1,5 @@
-package main.test.kotlin
+package captchaSolver
 
-import main.kotlin.CaptchaSolver
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
