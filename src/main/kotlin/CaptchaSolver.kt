@@ -2,12 +2,6 @@ package main.kotlin
 
 class CaptchaSolver {
 
-    class Puzzle(val puzzleInput: String) {
-        val puzzleInputDigits: List<Int> = puzzleInput.map({ c -> c.toString().toInt() })
-        val empty = puzzleInputDigits.size <= 1
-
-    }
-
     data class CalculationWindow(val previousDigit: Int, val accumulatedComputation: Int)
 
     fun solve(puzzleInput: String): Number {
