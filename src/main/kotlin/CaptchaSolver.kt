@@ -1,7 +1,8 @@
 package main.kotlin
+
 class CaptchaSolver {
 
-    data class CalculationWindow(val currentChar: String, val accumulatedComputation: Int)
+    data class CalculationWindow(val previousChar: String, val accumulatedComputation: Int)
 
     fun solve(puzzleInput: List<String>): Number {
         if (puzzleInput.size <= 1) {
@@ -11,16 +12,18 @@ class CaptchaSolver {
 
         return amendedPuzzleInput.fold(
                 CalculationWindow("", 0),
-                { calculationWindow, current: String ->
-                    CalculationWindow(current, conditionalCalculate(calculationWindow, current))
+                { calculationWindow, currentChar: String ->
+                    updateCalculationWindow(calculationWindow, currentChar)
                 }).accumulatedComputation;
     }
 
-    private fun conditionalCalculate(calculationWindow: CalculationWindow, current: String): Int {
-        var newAcc: Int = calculationWindow.accumulatedComputation;
-        if (calculationWindow.currentChar == current) {
-            newAcc += current.toInt();
+    private fun updateCalculationWindow(calculationWindow: CalculationWindow, currentChar: String): CalculationWindow {
+        val updatedAccumulatedComputation: Int = if (calculationWindow.previousChar == currentChar) {
+            calculationWindow.accumulatedComputation + currentChar.toInt()
+        } else {
+            calculationWindow.accumulatedComputation
         }
-        return newAcc;
+
+        return CalculationWindow(currentChar, updatedAccumulatedComputation)
     }
 }
